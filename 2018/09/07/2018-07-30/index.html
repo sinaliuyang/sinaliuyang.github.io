@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="hexo,mac,git," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="最近突发奇想，想搭建一个博客来记录一些事情，以及分享一些东西。之前有看到过hexo这个框架。所以也找了一些资料来查询如何搭建个人博客，下面介绍一下如何实现的。github的使用首先到github官网注册账号并且登录进去（有账号的可以省略注册过程）GitHub这个时候只能创建公开项目，不能创建私有项目，要创建私有项目要付费（好像是7美元一个月吧） 这里值得注意的是：在 Repository name">
+<meta name="keywords" content="hexo,mac,git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac平台下使用 Hexo + Github 搭建个人博客同时指向自己的域名">
+<meta property="og:url" content="http://yoursite.com/2018/09/07/2018-07-30/index.html">
+<meta property="og:site_name" content="LiuYang&#39;s Blog">
+<meta property="og:description" content="最近突发奇想，想搭建一个博客来记录一些事情，以及分享一些东西。之前有看到过hexo这个框架。所以也找了一些资料来查询如何搭建个人博客，下面介绍一下如何实现的。github的使用首先到github官网注册账号并且登录进去（有账号的可以省略注册过程）GitHub这个时候只能创建公开项目，不能创建私有项目，要创建私有项目要付费（好像是7美元一个月吧） 这里值得注意的是：在 Repository name">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/09/07/2018-07-30/createGithub.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/07/2018-07-30/showfind.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/07/2018-07-30/find.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/07/2018-07-30/rsa_rub.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/07/2018-07-30/sshAndGP.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/07/2018-07-30/hexo_file.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/07/2018-07-30/hexo_s.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/07/2018-07-30/wanwang_ali.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/07/2018-07-30/dns.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/07/2018-07-30/add_dns.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/07/2018-07-30/setting.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/07/2018-07-30/domain.png">
+<meta property="og:updated_time" content="2018-09-07T08:27:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac平台下使用 Hexo + Github 搭建个人博客同时指向自己的域名">
+<meta name="twitter:description" content="最近突发奇想，想搭建一个博客来记录一些事情，以及分享一些东西。之前有看到过hexo这个框架。所以也找了一些资料来查询如何搭建个人博客，下面介绍一下如何实现的。github的使用首先到github官网注册账号并且登录进去（有账号的可以省略注册过程）GitHub这个时候只能创建公开项目，不能创建私有项目，要创建私有项目要付费（好像是7美元一个月吧） 这里值得注意的是：在 Repository name">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/07/2018-07-30/createGithub.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/07/2018-07-30/"/>
+
+
+
+
+
+  <title>Mac平台下使用 Hexo + Github 搭建个人博客同时指向自己的域名 | LiuYang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LiuYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">自律给我自由</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/07/2018-07-30/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiuYang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head_image.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiuYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Mac平台下使用 Hexo + Github 搭建个人博客同时指向自己的域名</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-07T16:27:08+08:00">
+                2018-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/07/2018-07-30/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/07/2018-07-30/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/09/07/2018-07-30/" class="leancloud_visitors" data-flag-title="Mac平台下使用 Hexo + Github 搭建个人博客同时指向自己的域名">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="最近突发奇想，想搭建一个博客来记录一些事情，以及分享一些东西。之前有看到过hexo这个框架。所以也找了一些资料来查询如何搭建个人博客，下面介绍一下如何实现的。"><a href="#最近突发奇想，想搭建一个博客来记录一些事情，以及分享一些东西。之前有看到过hexo这个框架。所以也找了一些资料来查询如何搭建个人博客，下面介绍一下如何实现的。" class="headerlink" title="最近突发奇想，想搭建一个博客来记录一些事情，以及分享一些东西。之前有看到过hexo这个框架。所以也找了一些资料来查询如何搭建个人博客，下面介绍一下如何实现的。"></a>最近突发奇想，想搭建一个博客来记录一些事情，以及分享一些东西。之前有看到过hexo这个框架。所以也找了一些资料来查询如何搭建个人博客，下面介绍一下如何实现的。</h4><h2 id="github的使用"><a href="#github的使用" class="headerlink" title="github的使用"></a>github的使用</h2><p>首先到github官网注册账号并且登录进去（有账号的可以省略注册过程）<a href="https://github.com/" target="_blank" rel="noopener">GitHub</a><br><img src="/2018/09/07/2018-07-30/createGithub.png" alt="创建github项目"><br>这个时候只能创建公开项目，不能创建私有项目，要创建私有项目要付费（好像是7美元一个月吧）</p>
+<h3 id="这里值得注意的是：在-Repository-name-中的内容必须为-你的github名字-github-io，最好生成的路径就是：https-github-com-你的github名字-你的github名字-github-io-git-。接下来点击Create-repository即可。这个时候我们完成第一步：创建github的仓库。"><a href="#这里值得注意的是：在-Repository-name-中的内容必须为-你的github名字-github-io，最好生成的路径就是：https-github-com-你的github名字-你的github名字-github-io-git-。接下来点击Create-repository即可。这个时候我们完成第一步：创建github的仓库。" class="headerlink" title="这里值得注意的是：在 Repository name 中的内容必须为[你的github名字].github.io，最好生成的路径就是：https://github.com/[你的github名字]/[你的github名字].github.io.git 。接下来点击Create repository即可。这个时候我们完成第一步：创建github的仓库。"></a>这里值得注意的是：在 Repository name 中的内容必须为[你的github名字].github.io，最好生成的路径就是：<a href="https://github.com/[你的github名字]/[你的github名字].github.io.git" target="_blank" rel="noopener">https://github.com/[你的github名字]/[你的github名字].github.io.git</a> 。接下来点击Create repository即可。这个时候我们完成第一步：创建github的仓库。</h3><h2 id="配置github的SSH-keys"><a href="#配置github的SSH-keys" class="headerlink" title="配置github的SSH keys"></a>配置github的SSH keys</h2><p>打开mac终端，输入命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/.ssh  <span class="comment">#检查本机的ssh密钥</span></span><br></pre></td></tr></table></figure>
+<p>如果提示 No such file or directory 说明你是第一次使用 git。</p>
+<p>接下来生成新的SSH key：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"你的邮箱地址"</span></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/your_user_directory/.ssh/id_rsa):&lt;回车&gt;</span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):&lt;输入加密串&gt;&lt;如不想设置密码可直接回车表示为空&gt;</span><br><span class="line">Enter same passphrase again:&lt;再次输入加密串&gt;&lt;接着回车确认&gt;</span><br><span class="line">Your identification has been saved <span class="keyword">in</span> /Users/你的名字/.ssh/id_rsa).</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /Users/你的名字/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">43:c5:5b:5f:b1:f1:50:43:ad:20:a6:92:6a:1f:9a:3a <span class="string">"你的邮箱地址"</span></span><br></pre></td></tr></table></figure>
+<p>最后出现类似长方形的字符画即表示成功。</p>
+<p>此处可能会遇到个问题： 那就是无法看到.ssh 文件 （如果你的电脑设置了显示隐藏文件那么能看到，如果没有设置就看不到），这个时候我们用最快捷的方式处理</p>
+<p><img src="/2018/09/07/2018-07-30/showfind.png" alt="showFind"></p>
+<p><img src="/2018/09/07/2018-07-30/find.png" alt="find"></p>
+<p><img src="/2018/09/07/2018-07-30/rsa_rub.png" alt="rsa_rub"></p>
+<p>这个时候就能找到.ssh文件了，拷贝.pub结尾的文件（这个时候我们如果没有安装其余的软件，会发现打不开这个文件。怎么办呢？ 这个时候我们最直接暴力的方式就是把文件拖入到浏览器中，然后就可以看到里面的内容了）拷贝文件中的内容。接下来进入到github的账号设置界面</p>
+<p><img src="/2018/09/07/2018-07-30/sshAndGP.png" alt="rsa_rub"></p>
+<p>跟着第一步和第二步操作，然后点击 New SSH Key 把刚拷贝的内容复制到输入框中，点击Add SSH key即可。</p>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="Hexo-是高效的静态站点生成框架，她基于-Node-js。-通过-Hexo-你可以轻松地使用-Markdown-编写文章，除了-Markdown-本身的语法之外，还可以使用-Hexo-提供的-标签插件-来快速的插入特定形式的内容。"><a href="#Hexo-是高效的静态站点生成框架，她基于-Node-js。-通过-Hexo-你可以轻松地使用-Markdown-编写文章，除了-Markdown-本身的语法之外，还可以使用-Hexo-提供的-标签插件-来快速的插入特定形式的内容。" class="headerlink" title="Hexo 是高效的静态站点生成框架，她基于 Node.js。 通过 Hexo 你可以轻松地使用 Markdown 编写文章，除了 Markdown 本身的语法之外，还可以使用 Hexo 提供的 标签插件 来快速的插入特定形式的内容。"></a>Hexo 是高效的静态站点生成框架，她基于 Node.js。 通过 Hexo 你可以轻松地使用 Markdown 编写文章，除了 Markdown 本身的语法之外，还可以使用 Hexo 提供的 标签插件 来快速的插入特定形式的内容。</h3><p>首先，你必须在电脑中安装<a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a>，直接下载点击安装就可以了</p>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>输入以下命令安装: <a href="https://hexo.io/docs/" target="_blank" rel="noopener">Hexo官网</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install -g hexo (前面要加上sudo，否则安装的时候会提示没有权限)</span><br></pre></td></tr></table></figure>
+<p>接下来新建一个目录，位置随便放，目录名字随便取（比如：我们新建一个hexo的文件夹放在文稿下），然后用终端进入这个hexo的文件夹下，输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
+<p>然后可以看到hexo文件夹下的内容为：</p>
+<p><img src="/2018/09/07/2018-07-30/hexo_file.png" alt="hexo_file"></p>
+<p>继续执行npm install,然后看到内容会有一个db.json</p>
+<h3 id="启动本地博客"><a href="#启动本地博客" class="headerlink" title="启动本地博客"></a>启动本地博客</h3><p>完成以上东西，基本本地博客能启动了，接下来我们执行几个hexo的命令就可以看到效果了。</p>
+<p>执行第一个命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g （hexo generate的缩写）</span><br></pre></td></tr></table></figure>
+<p>这个命令是生成public静态资源（我们可以看到文件夹中多了一个叫：public文件夹）</p>
+<p>执行第二个命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s(hexo server的缩写)</span><br></pre></td></tr></table></figure>
+<p>这就是启动本地服务，然后就可以看到</p>
+<p><img src="/2018/09/07/2018-07-30/hexo_s.png" alt="hexo_s"></p>
+<p>拷贝 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 连接到浏览器就可以看到效果了。</p>
+<h3 id="关联到Github仓库"><a href="#关联到Github仓库" class="headerlink" title="关联到Github仓库"></a>关联到Github仓库</h3><p>这个时候我们发现，打开的是一个本地的博客，不能远程访问。然后你会看到你建的github仓库是空的，</p>
+<p>那我们先安装 hexo-deployer-git，输入如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>修改 _config.yml 文件中deploy的信息（_config.yml我是安装了UItraEdit软件来打开的）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: https://github.com/xxxx/xxxx.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>repository后面的内容就是你建的仓库路径。</p>
+<p>接下来执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d （把本地的内容push搞git仓库，每次修改之后都会更新上去）</span><br></pre></td></tr></table></figure>
+<p>完成以上步骤，在浏览器输入你建的github的路径（比如：<a href="https://xxxx.github.io.git）就可以看到刚新建的博客了。" target="_blank" rel="noopener">https://xxxx.github.io.git）就可以看到刚新建的博客了。</a></p>
+<h3 id="关联个人域名"><a href="#关联个人域名" class="headerlink" title="关联个人域名"></a>关联个人域名</h3><p>这个时候有的同学可能不想用github的域名，想自己整一个域名放进去。先去买一个域名，我是在阿里云上买的</p>
+<p><a href="https://sg.godaddy.com/zh/" target="_blank" rel="noopener">GoDaddy</a></p>
+<p><a href="https://wanwang.aliyun.com" target="_blank" rel="noopener">阿里云</a></p>
+<p>没有账号的就先注册，然后登录进去，搜索自己想要的域名，没有占用就购买，占用了就换一个。然后我们点击首页的控制台</p>
+<p><img src="/2018/09/07/2018-07-30/wanwang_ali.png" alt="wanwang_ali"></p>
+<p>进入之后，点击左边菜单下的 （域名 -&gt; 云解析DNS）,如下图</p>
+<p><img src="/2018/09/07/2018-07-30/dns.png" alt="dns"></p>
+<p><img src="/2018/09/07/2018-07-30/add_dns.png" alt="add_dns"></p>
+<p>添加记录，记录值就是跟你刚开始建的仓库名一样（xxxx.github.io），主机记录中的@字符和www的字符表示输入网址的时候带不带www都能正常的打开该域名</p>
+<p>然后在hexo/themes/landscape/source目录下新建CNAME文件，内容为自己域名.<br>（注意:这个CNAME文件必不可少，每次运行generate的时候会把这个路径下的东西copy到public下. ）</p>
+<h5 id="然后打开github下博客的仓库，找到setting按钮"><a href="#然后打开github下博客的仓库，找到setting按钮" class="headerlink" title="然后打开github下博客的仓库，找到setting按钮"></a>然后打开github下博客的仓库，找到setting按钮</h5><p><img src="/2018/09/07/2018-07-30/setting.png" alt="setting"></p>
+<h5 id="进入之后往下拉，找到Custom-domain"><a href="#进入之后往下拉，找到Custom-domain" class="headerlink" title="进入之后往下拉，找到Custom domain"></a>进入之后往下拉，找到Custom domain</h5><p><img src="/2018/09/07/2018-07-30/domain.png" alt="domain"></p>
+<p>输入自己的域名，然后就关联成功了。接下来我们测试一下看看效果。</p>
+<p>终端进入到hexo文件夹下，输入如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<p>命令运行结束之后，在浏览器输入自己的域名就可以看到第一篇博客了（Hello World）</p>
+
+      
+    </div>
+    
+    
+    
+		<div>
+  		
+    		<div>
+    
+        <div style="text-align:center;color: #555;font-size:14px;">-------------The End-------------</div>
+    
+</div>
+  		
+		</div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+          
+            <a href="/tags/mac/" rel="tag"><i class="fa fa-tag"></i> mac</a>
+          
+            <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/07/关于-reason-the-view-returned-from-collectionView-viewForSupplementaryElementOfKind-atIndexPath-UICollectionElementKindSectionHeader-NSIndexPath-0xc000000000000016-length-2-path-0-0-错误的解决办法和思路/" rel="next" title="关于 reason: 'the view returned from -collectionView:viewForSupplementaryElementOfKind:atIndexPath (UICollectionElementKindSectionHeader,<NSIndexPath: 0xc000000000000016> {length = 2, path = 0 - 0}) 错误的解决办法和思路">
+                <i class="fa fa-chevron-left"></i> 关于 reason: 'the view returned from -collectionView:viewForSupplementaryElementOfKind:atIndexPath (UICollectionElementKindSectionHeader,<NSIndexPath: 0xc000000000000016> {length = 2, path = 0 - 0}) 错误的解决办法和思路
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/12/纪念减脂塑身第三个月/" rel="prev" title="纪念减脂塑身第三个月">
+                纪念减脂塑身第三个月 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b7bc26f530701c4" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/head_image.png"
+                alt="LiuYang" />
+            
+              <p class="site-author-name" itemprop="name">LiuYang</p>
+              <p class="site-description motion-element" itemprop="description">知足常乐、淡泊名利、宽容待人、学会冷静</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#最近突发奇想，想搭建一个博客来记录一些事情，以及分享一些东西。之前有看到过hexo这个框架。所以也找了一些资料来查询如何搭建个人博客，下面介绍一下如何实现的。"><span class="nav-number">1.</span> <span class="nav-text">最近突发奇想，想搭建一个博客来记录一些事情，以及分享一些东西。之前有看到过hexo这个框架。所以也找了一些资料来查询如何搭建个人博客，下面介绍一下如何实现的。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#github的使用"><span class="nav-number"></span> <span class="nav-text">github的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#这里值得注意的是：在-Repository-name-中的内容必须为-你的github名字-github-io，最好生成的路径就是：https-github-com-你的github名字-你的github名字-github-io-git-。接下来点击Create-repository即可。这个时候我们完成第一步：创建github的仓库。"><span class="nav-number"></span> <span class="nav-text">这里值得注意的是：在 Repository name 中的内容必须为[你的github名字].github.io，最好生成的路径就是：https://github.com/[你的github名字]/[你的github名字].github.io.git 。接下来点击Create repository即可。这个时候我们完成第一步：创建github的仓库。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置github的SSH-keys"><span class="nav-number"></span> <span class="nav-text">配置github的SSH keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo"><span class="nav-number"></span> <span class="nav-text">Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo-是高效的静态站点生成框架，她基于-Node-js。-通过-Hexo-你可以轻松地使用-Markdown-编写文章，除了-Markdown-本身的语法之外，还可以使用-Hexo-提供的-标签插件-来快速的插入特定形式的内容。"><span class="nav-number"></span> <span class="nav-text">Hexo 是高效的静态站点生成框架，她基于 Node.js。 通过 Hexo 你可以轻松地使用 Markdown 编写文章，除了 Markdown 本身的语法之外，还可以使用 Hexo 提供的 标签插件 来快速的插入特定形式的内容。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Hexo"><span class="nav-number"></span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动本地博客"><span class="nav-number"></span> <span class="nav-text">启动本地博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联到Github仓库"><span class="nav-number"></span> <span class="nav-text">关联到Github仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联个人域名"><span class="nav-number"></span> <span class="nav-text">关联个人域名</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#然后打开github下博客的仓库，找到setting按钮"><span class="nav-number">0.1.</span> <span class="nav-text">然后打开github下博客的仓库，找到setting按钮</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#进入之后往下拉，找到Custom-domain"><span class="nav-number">0.2.</span> <span class="nav-text">进入之后往下拉，找到Custom domain</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LiuYang</span>
+
+  
+
+</div>
+ <!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+-->
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
++  <script src="/js/src/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        av: AV, 
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '2W3OvxA5z8o13b8sx770ib1K-gzGzoHsz',
+        appKey: 'jHfioU5GHwVlqxCeTWD4cjLx',
+        placeholder: 'just do it...',
+        avatar:'identicon',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("2W3OvxA5z8o13b8sx770ib1K-gzGzoHsz", "jHfioU5GHwVlqxCeTWD4cjLx");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
